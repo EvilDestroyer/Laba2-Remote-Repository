@@ -1,6 +1,8 @@
 import json
 import os
 
+"""Модуль функций для манипуляции списком дел."""
+
 class TaskManager:
     def __init__(self, filename="tasks.json"):
         self.filename = filename
