@@ -1,9 +1,9 @@
 import json
 import os
 
-"""Модуль функций для манипуляции списком дел."""
 
 class TaskManager:
+    """Модуль функций для манипуляции списком дел."""
     def __init__(self, filename="tasks.json"):
         self.filename = filename
         self.tasks = self._load_tasks()
@@ -36,7 +36,7 @@ class TaskManager:
             raise IndexError("Неверный индекс задачи")
 
     def delete_task(self, index):
-        """Удаляет выбранную."""
+        """Удаляет выбранную задачу."""
         if 0 <= index < len(self.tasks):
             del self.tasks[index]
             self._save_tasks()
