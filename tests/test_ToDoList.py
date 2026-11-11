@@ -37,3 +37,37 @@ def test_delete_task(manager):
 def test_invalid_index(manager):
     with pytest.raises(IndexError):
         manager.complete_task(99)
+
+
+def test_get_tasks_by_status(manager):
+    manager.add_task("Активная задача")
+    manager.add_task("Выполненная задача")
+    manager.complete_task(1)
+
+    active_tasks = manager.get_tasks_by_status(False)
+    completed_tasks = manager.get_tasks_by_status(True)
+
+    assert len(active_tasks) == 1
+    assert active_tasks[0]["task"] == "Активная задача"
+
+    assert len(completed_tasks) == 1
+    assert completed_tasks[0]["task"] == "Выполненная задача"
+
+
+def test_clear_completed(manager):
+    manager.add_task("Задача 1")
+    manager.add_task("Задача 2")
+    manager.add_task("Задача 3")
+
+    manager.complete_task(0)
+    manager.complete_task(2)
+
+    assert len(manager.get_tasks()) == 3
+
+    manager.clear_completed()
+
+
+    tasks_after = manager.get_tasks()
+    assert len(tasks_after) == 1
+    assert tasks_after[0]["task"] == "Задача 2"
+    assert tasks_after[0]["done"] is False

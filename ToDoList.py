@@ -38,3 +38,10 @@ class TaskManager:
 
     def get_tasks(self):
         return self.tasks
+
+    def get_tasks_by_status(self, done_status):
+        return [t for t in self.tasks if t["done"] == done_status]
+
+    def clear_completed(self):
+        self.tasks = [t for t in self.tasks if not t["done"]]
+        self._save_tasks()

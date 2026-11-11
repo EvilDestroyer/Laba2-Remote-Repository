@@ -7,6 +7,9 @@ def show_menu():
     print("2. Добавить задачу")
     print("3. Отметить задачу выполненной")
     print("4. Удалить задачу")
+    print("5. Показать только активные задачи")
+    print("6. Показать только выполненные задачи")
+    print("7. Очистить список от выполненных задач")
     print("0. Выход")
 
 
@@ -51,11 +54,28 @@ def main():
             except (ValueError, IndexError):
                 print("Введён некорректный номер.")
 
+        elif choice == "5":
+            tasks = manager.get_tasks_by_status(False)
+            print("\nАктивные задачи:")
+            for t in tasks:
+                print(f"[ ] {t['task']}")
+
+        elif choice == "6":
+            tasks = manager.get_tasks_by_status(True)
+            print("\nВыполненные задачи:")
+            for t in tasks:
+                print(f"[x] {t['task']}")
+
+        elif choice == "7":
+            manager.clear_completed()
+            print("Выполненные задачи удалены!")
+
         elif choice == "0":
             print("Завершение работы!")
             break
         else:
             print("Неверный ввод. Попробуйте снова.")
+
 
 
 if __name__ == "__main__":
