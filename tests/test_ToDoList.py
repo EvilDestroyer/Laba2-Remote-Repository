@@ -1,8 +1,10 @@
 import pytest
+import sys
 import os
 from ToDoList import TaskManager
 
-# Фикстура создает временный файл для тестов, чтобы не засорять основной
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+
 @pytest.fixture
 def manager(tmp_path):
     test_file = tmp_path / "test_tasks.json"
