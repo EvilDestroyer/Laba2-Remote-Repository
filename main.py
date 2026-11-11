@@ -41,7 +41,7 @@ def main():
                 manager.complete_task(idx)
                 print("Задача выполнена!")
             except (ValueError, IndexError):
-                print("Ошибка: Введите корректный номер из списка.")
+                print("Введён некорректный номер.")
 
         elif choice == "4":
             try:
@@ -49,10 +49,10 @@ def main():
                 manager.delete_task(idx)
                 print("Задача удалена!")
             except (ValueError, IndexError):
-                print("Ошибка: Введите корректный номер из списка.")
+                print("Введён некорректный номер.")
 
         elif choice == "0":
-            print("До свидания!")
+            print("Завершение работы!")
             break
         else:
             print("Неверный ввод. Попробуйте снова.")
