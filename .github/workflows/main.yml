@@ -14,13 +14,15 @@ jobs:
 
     steps:
       # Клонируем код из репозитория
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v5
 
       # Устанавливаем Python
       - name: Set up Python
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@v5
         with:
           python-version: "3.9"
+          check-latest: true
+          cache: 'pip'
 
       # Устанавливаем зависимости
       - name: Install dependencies
