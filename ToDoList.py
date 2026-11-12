@@ -5,6 +5,10 @@ import os
 
 
 
+
+
+
+
 class TaskManager:
     """Модуль функций для манипуляции списком дел."""
     def __init__(self, filename="tasks.json"):
@@ -23,20 +27,6 @@ class TaskManager:
         with open(self.filename, "w", encoding="utf-8") as f:
             json.dump(self.tasks, f, ensure_ascii=False, indent=4)
 
-    def add_task(self, task):
-        """Добавляет новую задачу."""
-        if not task or not task.strip():
-            raise ValueError("Задача не может быть пустой")
-        self.tasks.append({"task": task.strip(), "done": False})
-        self._save_tasks()
-
-    def complete_task(self, index):
-        """Помечает указанную задачу как выполненную."""
-        if 0 <= index < len(self.tasks):
-            self.tasks[index]["done"] = True
-            self._save_tasks()
-        else:
-            raise IndexError("Неверный индекс задачи")
 
     def delete_task(self, index):
         """Удаляет выбранную задачу."""
